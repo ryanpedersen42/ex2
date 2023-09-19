@@ -1,8 +1,9 @@
 version: 2.1
 
 executors:
-  docker:
-    - image: cimg/base:stable  
+  base:
+    docker:
+      - image: cimg/base:stable  
 
 jobs:
   check_prs:
@@ -12,6 +13,7 @@ jobs:
           name: Check PRs
           command: |
             pr_request=`curl --request GET --url https://api.github.com/repos/ryanpedersen42/${CIRCLE_PROJECT_REPONAME}/pulls --header "Authorization: Bearer ${GITHUB_API_TOKEN}" | jq length
+            echo $pr_requests
       - run:
           name: Report
           command: |
