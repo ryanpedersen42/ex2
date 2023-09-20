@@ -21,7 +21,7 @@ headers = {
 entity_json = {
         "identifier": "ex2",
         "properties": {
-          "pull_requests_open": sys.argv[0],
+          "pull_requests_open": sys.argv[1],
       }
 }
 
