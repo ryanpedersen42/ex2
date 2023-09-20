@@ -5,7 +5,7 @@ import json
 # These are the credentials passed by the 'port' context to your environment variables
 CLIENT_ID = os.environ['PORT_CLIENT_ID']
 CLIENT_SECRET = os.environ['PORT_CLIENT_SECRET']
-# PR_REQUESTS = os.environ['PR_REQUESTS_OPEN']
+PR_REQUESTS = os.environ['PR_REQUESTS_OPEN']
 
 credentials = {
     'clientId': CLIENT_ID,
@@ -21,11 +21,11 @@ headers = {
 entity_json = {
         "identifier": "ex2",
         "properties": {
-          "pull_requests_open": PR_REQUESTS_OPEN,
+          "pull_requests_open": PR_REQUESTS,
       }
 }
 
-print(os.environ['PR_REQUESTS_OPEN'])
+print(os.environ['PR_REQUESTS'])
 
 # request url : {API_URL}/blueprints/<blueprint_id>/entities
 create_response = requests.post(f'https://api.getport.io/v1/blueprints/repository/entities?upsert=true', json=entity_json, headers=headers)
