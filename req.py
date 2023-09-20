@@ -20,7 +20,7 @@ headers = {
 entity_json = {
         "identifier": "ex2",
         "properties": {
-          "pull_requests_open": 1,
+          "pull_requests_open": 14,
       }
 }
 
