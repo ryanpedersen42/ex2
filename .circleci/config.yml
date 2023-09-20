@@ -19,7 +19,7 @@ jobs:
       - run:
           name: Run Python
           command: |
-            python req.py
+            pip install requests && python req.py
 
 workflows:
   main:
