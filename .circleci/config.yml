@@ -17,10 +17,10 @@ jobs:
             echo "there are $pr_request requests"
             echo 'export PR_REQUESTS_OPEN=$pr_requests' >> "$BASH_ENV"
           
-      - run:
-          name: Run Python
-          command: |
-            echo $PR_REQUESTS_OPEN
+      # - run:
+      #     name: Run Python
+      #     command: |
+      #       echo $PR_REQUESTS_OPEN
             pip install requests && python req.py
 
 workflows:

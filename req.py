@@ -5,7 +5,7 @@ import json
 # These are the credentials passed by the 'port' context to your environment variables
 CLIENT_ID = os.environ['PORT_CLIENT_ID']
 CLIENT_SECRET = os.environ['PORT_CLIENT_SECRET']
-PR_REQUESTS = os.environ['PR_REQUESTS_OPEN']
+PR_REQUESTS = os.environ['pr_request']
 
 credentials = {
     'clientId': CLIENT_ID,
