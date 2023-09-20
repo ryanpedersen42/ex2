@@ -16,12 +16,12 @@ jobs:
             pr_request=$( curl --request GET --url https://api.github.com/repos/ryanpedersen42/${CIRCLE_PROJECT_REPONAME}/pulls --header "Authorization: Bearer $GITHUB_API_TOKEN" | jq length )
             echo "there are $pr_request requests"
             echo 'export PR_REQUESTS_OPEN=$pr_requests' >> "$BASH_ENV"
+            pip install requests && python req.py
           
       # - run:
       #     name: Run Python
       #     command: |
       #       echo $PR_REQUESTS_OPEN
-            pip install requests && python req.py
 
 workflows:
   main:
