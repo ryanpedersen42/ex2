@@ -1,14 +1,15 @@
 version: 2.1
 
 executors:
-  base:
+  python:
     docker:
-      - image: cimg/base:stable  
+      - image: cimg/python:3.11.5
 
 jobs:
   check_prs:
-    executor: base
+    executor: python
     steps:
+      - checkout
       - run: 
           name: Check PRs
           command: |
@@ -16,9 +17,9 @@ jobs:
             echo "there are $pr_request requests"
           
       - run:
-          name: Report
+          name: Run Python
           command: |
-            echo "to do"
+            python req.py
 
 workflows:
   main:
