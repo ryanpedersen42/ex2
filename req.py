@@ -25,7 +25,7 @@ entity_json = {
       }
 }
 
-print(os.environ['PR_REQUESTS'])
+print("some number", os.environ['PR_REQUESTS_OPEN'], PR_REQUESTS)
 
 # request url : {API_URL}/blueprints/<blueprint_id>/entities
 create_response = requests.post(f'https://api.getport.io/v1/blueprints/repository/entities?upsert=true', json=entity_json, headers=headers)
