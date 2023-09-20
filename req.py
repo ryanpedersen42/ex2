@@ -21,11 +21,11 @@ headers = {
 entity_json = {
         "identifier": "ex2",
         "properties": {
-          "pull_requests_open": PR_REQUESTS,
+          "pull_requests_open": PR_REQUESTS_OPEN,
       }
 }
 
-print("some number", os.environ['PR_REQUESTS_OPEN'], PR_REQUESTS)
+print("some number", os.environ['PR_REQUESTS_OPEN'], PR_REQUESTS_OPEN)
 
 # request url : {API_URL}/blueprints/<blueprint_id>/entities
 create_response = requests.post(f'https://api.getport.io/v1/blueprints/repository/entities?upsert=true', json=entity_json, headers=headers)
