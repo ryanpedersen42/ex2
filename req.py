@@ -10,7 +10,7 @@ credentials = {
     'clientId': CLIENT_ID,
     'clientSecret': CLIENT_SECRET
 }
-token_response = requests.post(f"{API_URL}/auth/access_token", json=credentials)
+token_response = requests.post(f"https://api.getport.io/v1/auth/access_token", json=credentials)
 access_token = token_response.json()['accessToken']
 
 headers = {
@@ -25,5 +25,5 @@ entity_json = {
 }
 
 # request url : {API_URL}/blueprints/<blueprint_id>/entities
-create_response = requests.post(f'{API_URL}/blueprints/repository/entities?upsert=true', json=entity_json, headers=headers)
+create_response = requests.post(f'https://api.getport.io/v1/blueprints/repository/entities?upsert=true', json=entity_json, headers=headers)
 print(json.dumps(get_response.json(), indent=4))
