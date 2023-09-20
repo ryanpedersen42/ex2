@@ -20,6 +20,7 @@ jobs:
       - run:
           name: Run Python
           command: |
+            echo $PR_REQUESTS_OPEN
             pip install requests && python req.py
 
 workflows:
