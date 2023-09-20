@@ -26,4 +26,4 @@ entity_json = {
 
 # request url : {API_URL}/blueprints/<blueprint_id>/entities
 create_response = requests.post(f'https://api.getport.io/v1/blueprints/repository/entities?upsert=true', json=entity_json, headers=headers)
-print(json.dumps(get_response.json(), indent=4))
+print(json.dumps(token_response.json(), indent=4))
