@@ -22,16 +22,16 @@ jobs:
           echo "PR_COUNT=$( curl --request GET --url https://api.github.com/repos/ryanpedersen42/${{ github.repository }}/pulls --header "Authorization: Bearer ${{ secrets.API_TOKEN_GH }}" | jq length )" >> $GITHUB_ENV
           pip install requests
           python reqgh.py $pr_request ${{ secrets.PORT_CLIENT_ID }} ${{ secrets.PORT_CLIENT_SECRET }}
-      # - name: Port API 
-      #   uses: port-labs/port-github-action@v1
-      #   with:
-      #     clientId: ${{ secrets.PORT_CLIENT_ID }}
-      #     clientSecret: ${{ secrets.PORT_CLIENT_SECRET }}
-      #     operation: UPSERT
-      #     identifier: ex2
-      #     title: ${{ github.repository }}
-      #     blueprint: repository
-      #     properties: |-
-      #       {
-      #         "pull_requests_open": ${{ env.PR_COUNT }}
-      #       }
+      - name: Port API 
+        uses: port-labs/port-github-action@v1
+        with:
+          clientId: ${{ secrets.PORT_CLIENT_ID }}
+          clientSecret: ${{ secrets.PORT_CLIENT_SECRET }}
+          operation: UPSERT
+          identifier: ex2
+          title: ${{ github.repository }}
+          blueprint: repository
+          properties: |-
+            {
+              "pull_requests_open": ${{ env.PR_COUNT }}
+            }
