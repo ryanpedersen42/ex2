@@ -16,7 +16,7 @@ jobs:
             pr_request=$( curl --request GET --url https://api.github.com/repos/ryanpedersen42/${CIRCLE_PROJECT_REPONAME}/pulls --header "Authorization: Bearer $GITHUB_API_TOKEN" | jq length )
             echo "there are $pr_request requests"
             pip install requests
-            python req.py $pr_request
+            python req.py $pr_request $PORT_CLIENT_ID $PORT_CLIENT_SECRET
 
 workflows:
   main:
