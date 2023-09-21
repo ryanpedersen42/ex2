@@ -4,12 +4,12 @@ import json
 import sys
 
 # These are the credentials passed by the 'port' context to your environment variables
-# CLIENT_ID = os.environ['PORT_CLIENT_ID']
-# CLIENT_SECRET = os.environ['PORT_CLIENT_SECRET']
+CLIENT_ID = os.environ['PORT_CLIENT_ID']
+CLIENT_SECRET = os.environ['PORT_CLIENT_SECRET']
 
 credentials = {
-    'clientId': sys.argv[2],
-    'clientSecret': sys.argv[3]
+    'clientId': CLIENT_ID,
+    'clientSecret': CLIENT_SECRET
 }
 token_response = requests.post(f"https://api.getport.io/v1/auth/access_token", json=credentials)
 access_token = token_response.json()['accessToken']
