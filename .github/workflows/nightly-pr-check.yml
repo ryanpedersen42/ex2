@@ -19,7 +19,7 @@ jobs:
           echo "there are $pr_request requests"
           echo "PR_COUNT=$( curl --request GET --url https://api.github.com/repos/ryanpedersen42/${{ github.repository }}/pulls --header "Authorization: Bearer ${{ secrets.API_TOKEN_GH }}" | jq length )" >> $GITHUB_ENV
           pip install requests
-          python req.py $pr_request
+          python req.py $pr_request ${{ secrets.PORT_CLIENT_ID }} ${{ secrets.PORT_CLIENT_SECRET }}
       # - name: Port API 
       #   uses: port-labs/port-github-action@v1
       #   with:
