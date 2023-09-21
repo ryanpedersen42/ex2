@@ -32,5 +32,5 @@ jobs:
           blueprint: repository
           properties: |-
             {
-              "pull_requests_open": $( curl --request GET --url https://api.github.com/repos/ryanpedersen42/${{ github.repository }}/pulls --header "Authorization: Bearer ${{ secrets.API_TOKEN_GH }}" | jq length )
+              "pull_requests_open": `curl --request GET --url https://api.github.com/repos/ryanpedersen42/${{ github.repository }}/pulls --header "Authorization: Bearer ${{ secrets.API_TOKEN_GH }}" | jq length`
             }
