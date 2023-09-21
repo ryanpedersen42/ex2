@@ -15,18 +15,22 @@ jobs:
           python-version: '3.11.5'
       - name: Check PRs
         run: |
-          pr_request=$( curl --request GET --url https://api.github.com/repos/ryanpedersen42/${CIRCLE_PROJECT_REPONAME}/pulls --header "Authorization: Bearer $GITHUB_API_TOKEN" | jq length )
+          PORT_CLIENT_ID=${{ secrets.PORT_CLIENT_ID }}
+          PORT_CLIENT_SECRET=${{ secrets.PORT_CLIENT_SECRET }}
+          pr_request=$( curl --request GET --url https://api.github.com/repos/ryanpedersen42/${{ github.repository }}/pulls --header "Authorization: Bearer ${{ secrets.API_TOKEN_GH }}" | jq length )
           echo "there are $pr_request requests"
           pip install requests
           python req.py $pr_request
-     
-      # - name: Port API 
-      #   uses: port-labs/port-github-action@v1
-      #   with:
-      #     clientId: ${{ secrets.PORT_CLIENT_ID }}
-      #     clientSecret: ${{ secrets.PORT_CLIENT_SECRET }}
-      #     operation: UPSERT
-      #     identifier: ex4
-      #     title: ${{ github.repository }}
-      #     blueprint: repository
-      #     properties: |-
+      - name: Port API 
+        uses: port-labs/port-github-action@v1
+        with:
+          clientId: ${{ secrets.PORT_CLIENT_ID }}
+          clientSecret: ${{ secrets.PORT_CLIENT_SECRET }}
+          operation: UPSERT
+          identifier: ex2
+          title: ${{ github.repository }}
+          blueprint: repository
+          properties: |-
+            {
+              "pull_requests_open": $( curl --request GET --url https://api.github.com/repos/ryanpedersen42/${{ github.repository }}/pulls --header "Authorization: Bearer ${{ secrets.API_TOKEN_GH }}" | jq length )
+            }
